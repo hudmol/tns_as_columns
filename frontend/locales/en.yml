@@ -1,0 +1,10 @@
+en:
+  search:
+    accession:
+      processing_status: Processing Status
+  enumerations:
+    collection_management_processing_status:
+      not_yet_processed: Not Yet Processed
+      step_1_completed: Step 1 Completed
+      step_2_completed: Step 2 Completed
+      step_3_completed: Step 3 Completed

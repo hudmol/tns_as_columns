@@ -16,11 +16,8 @@ class IndexerCommon
     # sort records without extents to the end
     return 'ZZZZZZZZZZ' unless extents && extents.is_a?(Array) && !extents.empty?
 
-    # just return the biggest number generously padded
-    extents.map{|e|
-      (whole, fract) = e['number'].split('.')
-      [whole.rjust(12, '0'), fract].join
-    }.max
+    (whole, fract) = extents[0]['number'].split('.')
+    [whole.rjust(12, '0'), fract].join
   end
 
 
@@ -30,6 +27,12 @@ class IndexerCommon
         if cm = record['record']['collection_management']
           doc['processing_status_u_ssort'] = cm['processing_status']
         end
+      end
+    }
+
+    indexer.add_document_prepare_hook {|doc, record|
+      if doc['primary_type'] == 'resource' && !record['record']['extents'].empty?
+        doc['extent_sort_type_u_sstr'] = record['record']['extents'][0]['extent_type']
       end
     }
 

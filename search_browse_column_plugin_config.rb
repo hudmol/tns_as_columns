@@ -46,6 +46,10 @@ module SearchAndBrowseColumnPlugin
             :sortable => true,
             :sort_by => 'dates_u_ssort',
           },
+          'repository_processing_note' => {
+            :field => 'repository_processing_note_u_ssort',
+            :sortable => true,
+          },
         },
       },
       'event' => {

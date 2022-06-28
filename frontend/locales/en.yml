@@ -4,6 +4,7 @@ en:
       processing_status: Processing Status
     resource:
       extent_sort_type_u_sstr: Extent Type
+      repository_processing_note: Repository Processing Note
   enumerations:
     collection_management_processing_status:
       not_yet_processed: Not Yet Processed

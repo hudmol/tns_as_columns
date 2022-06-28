@@ -47,5 +47,15 @@ class IndexerCommon
         doc['linked_records_u_ssort'] = (record['record']['linked_records'].first || {}).fetch('_resolved', {})['title']
       end
     }
+
+    indexer.add_document_prepare_hook {|doc, record|
+      if ['resource', 'archival_object'].include?(doc['primary_type'])
+        if record['record']['repository_processing_note'].to_s.length > 500
+          doc['repository_processing_note_u_ssort'] = record['record']['repository_processing_note'].to_s[0..500] + '...'
+        else
+          doc['repository_processing_note_u_ssort'] = record['record']['repository_processing_note']
+        end
+      end
+    }
   end
 end
